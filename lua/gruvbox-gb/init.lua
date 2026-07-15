@@ -3,7 +3,7 @@ local theme = require("gruvbox-gb.theme")
 
 local M = {}
 
-function M.colorscheme()
+function M.setup()
   util.load(theme.setup())
 end
 
