@@ -1,14 +1,15 @@
-local util = require("gruvbox-baby.util")
+local util = require("gruvbox-gb.util")
 
 local M = {}
 
 local the_palette = {
+  black = "#000000",
   dark0 = "#0d0e0f",
   dark = "#202020",
   foreground = "#ebdbb2",
   background = "#282828",
-  background_dark = "#1d2021",
-  background_light = "#32302f",
+  background_dark = "#1d2021",  -- hard contrast
+  background_light = "#32302f", -- soft contrast
   medium_gray = "#504945",
   comment = "#665c54",
   gray = "#DEDEDE",
@@ -56,7 +57,7 @@ local original_palette = vim.tbl_extend("force", the_palette, {
 })
 
 function M.config(config)
-  config = config or require("gruvbox-baby.config")
+  config = config or require("gruvbox-gb.config")
   local colors
   if config.use_original_palette then
     colors = original_palette
@@ -65,6 +66,11 @@ function M.config(config)
   end
 
   local intensity_map = {
+    ["black"] = {
+      dark = colors.dark0,
+      background = colors.black,
+      background_dark = util.darken(colors.background_dark, 0.8),
+    },
     ["dark"] = {
       dark = colors.dark0,
       background = colors.background_dark,
@@ -89,6 +95,9 @@ function M.config(config)
   local background = config.background_color or colors.background
   if intensity_map[background] then
     colors = vim.tbl_extend("force", colors, intensity_map[background])
+  end
+  if background == "black" then
+    colors.term[0] = '#000000'
   end
 
   if config.transparent_mode then

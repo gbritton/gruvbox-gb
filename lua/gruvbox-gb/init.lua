@@ -1,0 +1,10 @@
+local util = require("gruvbox-gb.util")
+local theme = require("gruvbox-gb.theme")
+
+local M = {}
+
+function M.colorscheme()
+  util.load(theme.setup())
+end
+
+return M

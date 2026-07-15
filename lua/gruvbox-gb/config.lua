@@ -4,7 +4,7 @@ local config
 vim = vim or { g = {}, o = {} }
 
 local function opt(key, default)
-  key = "gruvbox_baby_" .. key
+  key = "gruvbox_gb_" .. key
   if vim.g[key] == nil then
     return default
   end
@@ -15,7 +15,7 @@ local function opt(key, default)
 end
 
 config = {
-  background_color = opt("background_color", "medium"),
+  background_color = opt("background_color", "black"),
   comment_style = opt("comment_style", "italic"),
   keyword_style = opt("keyword_style", "italic"),
   function_style = opt("function_style", "bold"),
