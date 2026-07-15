@@ -4,4 +4,4 @@ lua package.loaded['gruvbox-gb.theme'] = nil
 lua package.loaded['gruvbox-gb.util'] = nil
 lua package.loaded['gruvbox-gb'] = nil
 
-lua require('gruvbox-gb').colorscheme()
+lua require('gruvbox-gb').setup()
